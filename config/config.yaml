@@ -32,28 +32,74 @@ app:
 platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
-    - id: "toutiao"
-      name: "今日头条"
-    - id: "baidu"
-      name: "百度热搜"
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
-    - id: "thepaper"
-      name: "澎湃新闻"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-    - id: "cls-hot"
-      name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "tieba"
-      name: "贴吧"
-    - id: "weibo"
-      name: "微博"
-    - id: "douyin"
-      name: "抖音"
-    - id: "zhihu"
-      name: "知乎"
+     # === 综合新闻媒体类 ===
+  - id: "toutiao"
+    name: "今日头条"
+  - id: "baidu"
+    name: "百度热搜"
+  - id: "thepaper"
+    name: "澎湃新闻"
+  - id: "ifeng"
+    name: "凤凰网"
+  - id: "cankaoxiaoxi"
+    name: "参考消息"
+  - id: "sputniknewscn"
+    name: "卫星通讯社"
+  - id: "zaobao"
+    name: "联合早报"
+  - id: "mktnews"
+    name: "MKT新闻"
+  - id: "kaopu"
+    name: "靠谱新闻"
+
+  # === 财经投资类 ===
+  - id: "wallstreetcn-hot"
+    name: "华尔街见闻 最热"
+  - id: "wallstreetcn-quick"
+    name: "华尔街见闻 快讯"
+  - id: "wallstreetcn-news"
+    name: "华尔街见闻 最新"
+  - id: "cls-hot"
+    name: "财联社热门"
+  - id: "gelonghui"
+    name: "格隆汇"
+  - id: "xueqiu"
+    name: "雪球"
+  - id: "jin10"
+    name: "金十数据"
+  - id: "fastbull"
+    name: "快讯通"
+
+  # === 社交/短视频/娱乐类 ===
+  - id: "weibo"
+    name: "微博"
+  - id: "douyin"
+    name: "抖音"
+  - id: "bilibili-hot-search"
+    name: "bilibili 热搜"
+  - id: "tieba"
+    name: "贴吧"
+  - id: "zhihu"
+    name: "知乎"
+  - id: "hupu"
+    name: "虎扑"
+
+  # === 其他/工具类 ===
+
+  - id: "tencent-hot"
+    name: "腾讯新闻 综合早报"
+    
+  - id: "cls-telegraph"
+    name: "财联社 电报"
+    
+  - id: "cls-depth"
+    name: "财联社 深度"
+    
+  - id: "fastbull-express"
+    name: "法布财经 快讯"
+    
+  - id: "fastbull-news"
+    name: "法布财经 头条"
 
 
 
@@ -81,7 +127,7 @@ rss:
   freshness_filter:
     enabled: true                     # 是否启用新鲜度过滤（默认启用）
 
-    max_age_days: 3                   # 最大文章年龄（天）
+    max_age_days: 1                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -90,20 +136,23 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
-      # max_age_days: 1               # 示例：只推送1天内的文章
+    - id: "Sydney Morning Herald - Latest News"
+      name: "Sydney Morning Herald"
+      url: "https://www.smh.com.au/rss/feed.xml"
 
-    - id: "ruanyifeng"
-      name: "阮一峰的网络日志"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
-      # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
-    
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false                  # 禁用
+    - id: "ABC News"
+      name: "ABC News"
+      url: "https://www.abc.net.au/news/feed/1948/rss.xml"
+
+    - id: "頭條日報 Headline Daily - 頭條網"
+      name: "頭條日報 Headline Daily - 頭條網"
+      url: "https://www.thestandard.com.hk/newsfeed/latest/news.xml"
+
+
+
+
+
+
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -166,34 +215,19 @@ display:
   #   2. 下方 regions 中对应开关为 true
   region_order:
     - new_items                       # 1️⃣ 新增热点区域
-    - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
-    - rss                             # 3️⃣ RSS 订阅区域
-    - standalone                      # 4️⃣ 独立展示区
-    - ai_analysis                     # 5️⃣ AI 分析区域
-
-  # 推送区域开关
-  # 控制各区域是否启用（配合 region_order 使用）
+    - hotlist                       # 2️⃣ 热榜区域（关键词匹配）
+    - rss                       # 3️⃣ RSS 订阅区域
+    - standalone                       # 4️⃣ 独立展示区
+    - ai_analysis                       # 5️⃣ AI 分析区域
   regions:
-    hotlist: true                     # 热榜区域（关键词匹配的热点新闻）
-    new_items: true                   # 新增热点区域（含热榜新增 + RSS 新增）
-                                      # 注：热点词汇统计中的新增标记🆕不受此配置影响
-
-    rss: true                         # RSS 订阅区域
-                                      # 开启后将对 RSS 进行关键词分析并在通知中展示
-                                      # 关闭后跳过分析，但独立展示区不受影响
-
-    standalone: false                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
-    ai_analysis: true                 # AI 分析区域
-
-  # 📋 独立展示区配置（仅在 regions.standalone: true 时生效）
-  # 用途：将指定平台的完整热榜/RSS 单独展示，不受关键词过滤影响
-  # 适用场景：
-  #   - 想完整查看某个平台的热榜排名
-  #   - RSS 源内容较少，希望全部展示而非只显示关键词匹配的
-  # 注意：同一新闻可能同时出现在关键词匹配区和独立展示区
+    new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
+    hotlist: true # 热榜区域（关键词匹配的热点新闻）
+    rss: true # RSS 订阅区域
+    standalone: true # 独立展示区（完整热榜/RSS，不受关键词过滤）
+    ai_analysis: true # AI 分析区域
   standalone:
-    platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["thepaper"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["ABC News","頭條日報 Headline Daily - 頭條網","Sydney Morning Herald - Latest News"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
@@ -343,9 +377,9 @@ ai:
   
   model: "deepseek/deepseek-chat"
 
-  api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: "sk-9e06dbe61d7c45bdad0f479a445f1f4f"                       # API Key（建议使用环境变量 AI_API_KEY）
   
-  api_base: ""                      # 自定义 API 端点（可选，大多数情况留空）
+  api_base: "https://api.deepseek.com"                      # 自定义 API 端点（可选，大多数情况留空）
                                     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
                                     #
                                     # 💡 超级重要：连接任意兼容 OpenAI 协议的模型商
@@ -448,7 +482,7 @@ ai_analysis:
                                       # GitHub Action 部署默认推送约 20 次（每小时推送一次）， 约 0.1 元/天
                                       # Docker 部署默认推送 48 次(每半小时推送一次)， 约 0.2 元/天
 
-  include_rss: false                 # 是否包含 RSS 内容进行分析
+  include_rss: true                 # 是否包含 RSS 内容进行分析
 
   include_rank_timeline: true      # 是否传递完整排名时间线
                                     # false: 使用简化格式（排名范围+时间范围+出现次数）
@@ -463,7 +497,7 @@ ai_analysis:
 # 模型配置见上方 ai 配置段
 # ===============================================================
 ai_translation:
-  enabled: false                    # 是否启用翻译功能
+  enabled: true                    # 是否启用翻译功能
 
   # 翻译目标语言
   # 格式：自然语言描述
