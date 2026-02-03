@@ -33,73 +33,62 @@ platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
      # === 综合新闻媒体类 ===
-  - id: "toutiao"
-    name: "今日头条"
-  - id: "baidu"
-    name: "百度热搜"
-  - id: "thepaper"
-    name: "澎湃新闻"
-  - id: "ifeng"
-    name: "凤凰网"
-  - id: "cankaoxiaoxi"
-    name: "参考消息"
-  - id: "sputniknewscn"
-    name: "卫星通讯社"
-  - id: "zaobao"
-    name: "联合早报"
-  - id: "mktnews"
-    name: "MKT新闻"
-  - id: "kaopu"
-    name: "靠谱新闻"
-
-  # === 财经投资类 ===
-  - id: "wallstreetcn-hot"
-    name: "华尔街见闻 最热"
-  - id: "wallstreetcn-quick"
-    name: "华尔街见闻 快讯"
-  - id: "wallstreetcn-news"
-    name: "华尔街见闻 最新"
-  - id: "cls-hot"
-    name: "财联社热门"
-  - id: "gelonghui"
-    name: "格隆汇"
-  - id: "xueqiu"
-    name: "雪球"
-  - id: "jin10"
-    name: "金十数据"
-  - id: "fastbull"
-    name: "快讯通"
-
-  # === 社交/短视频/娱乐类 ===
-  - id: "weibo"
-    name: "微博"
-  - id: "douyin"
-    name: "抖音"
-  - id: "bilibili-hot-search"
-    name: "bilibili 热搜"
-  - id: "tieba"
-    name: "贴吧"
-  - id: "zhihu"
-    name: "知乎"
-  - id: "hupu"
-    name: "虎扑"
-
-  # === 其他/工具类 ===
-
-  - id: "tencent-hot"
-    name: "腾讯新闻 综合早报"
-    
-  - id: "cls-telegraph"
-    name: "财联社 电报"
-    
-  - id: "cls-depth"
-    name: "财联社 深度"
-    
-  - id: "fastbull-express"
-    name: "法布财经 快讯"
-    
-  - id: "fastbull-news"
-    name: "法布财经 头条"
+    - id: "toutiao"
+      name: "今日头条"
+    - id: "cankaoxiaoxi"
+      name: "参考消息"
+    - id: "thepaper"
+      name: "澎湃新闻"
+    - id: "baidu"
+      name: "百度热搜"
+    - id: "ifeng"
+      name: "凤凰网"
+    - id: "sputniknewscn"
+      name: "卫星通讯社"
+    - id: "zaobao"
+      name: "联合早报"
+    - id: "mktnews"
+      name: "MKT新闻"
+    - id: "kaopu"
+      name: "靠谱新闻"
+    - id: "wallstreetcn-hot"
+      name: "华尔街见闻 最热"
+    - id: "wallstreetcn-quick"
+      name: "华尔街见闻 快讯"
+    - id: "wallstreetcn-news"
+      name: "华尔街见闻 最新"
+    - id: "cls-hot"
+      name: "财联社热门"
+    - id: "gelonghui"
+      name: "格隆汇"
+    - id: "xueqiu"
+      name: "雪球"
+    - id: "jin10"
+      name: "金十数据"
+    - id: "fastbull"
+      name: "快讯通"
+    - id: "weibo"
+      name: "微博"
+    - id: "douyin"
+      name: "抖音"
+    - id: "bilibili-hot-search"
+      name: "bilibili 热搜"
+    - id: "tieba"
+      name: "贴吧"
+    - id: "zhihu"
+      name: "知乎"
+    - id: "hupu"
+      name: "虎扑"
+    - id: "tencent-hot"
+      name: "腾讯新闻 综合早报"
+    - id: "cls-telegraph"
+      name: "财联社 电报"
+    - id: "cls-depth"
+      name: "财联社 深度"
+    - id: "fastbull-express"
+      name: "法布财经 快讯"
+    - id: "fastbull-news"
+      name: "法布财经 头条"
 
 
 
@@ -214,19 +203,19 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中对应开关为 true
   region_order:
-    - new_items                       # 1️⃣ 新增热点区域
     - hotlist                       # 2️⃣ 热榜区域（关键词匹配）
     - rss                       # 3️⃣ RSS 订阅区域
+    - new_items                       # 1️⃣ 新增热点区域
     - standalone                       # 4️⃣ 独立展示区
     - ai_analysis                       # 5️⃣ AI 分析区域
   regions:
-    new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
     hotlist: true # 热榜区域（关键词匹配的热点新闻）
     rss: true # RSS 订阅区域
+    new_items: true # 新增热点区域（含热榜新增 + RSS 新增）
     standalone: true # 独立展示区（完整热榜/RSS，不受关键词过滤）
     ai_analysis: true # AI 分析区域
   standalone:
-    platforms: ["thepaper"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["cankaoxiaoxi","thepaper","toutiao"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: ["ABC News","頭條日報 Headline Daily - 頭條網","Sydney Morning Herald - Latest News"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
@@ -502,7 +491,7 @@ ai_translation:
   # 翻译目标语言
   # 格式：自然语言描述
   # 示例: "Chinese", "Korean", "法语"
-  language: "English"
+  language: "Chinese"
 
   # 提示词配置文件路径（相对于 config 目录）
   prompt_file: "ai_translation_prompt.txt"
